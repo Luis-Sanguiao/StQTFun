@@ -1,30 +1,20 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// This is a simple function using Rcpp that creates an R list
-// containing a character vector and a numeric vector.
-//
-// Learn more about how to use Rcpp at:
-//
-//   http://www.rcpp.org/
-//   http://adv-r.had.co.nz/Rcpp.html
-//
-// and browse examples of code using Rcpp at:
-//
-//   http://gallery.rcpp.org/
+// This function returns the UFAES-Stratum taking stratum as input
 //
 
 // [[Rcpp::export]]
 List estratofun(CharacterVector estrato)
 {
-  int i,j,n=estrato.size();
+  int i,n=estrato.size();
   CharacterVector estrato_v(n),divi(n);
 
   char elemento[6],cad[3],*temp;
 
   for(i=0;i<n;++i)
   {
-    for(j=0;j<6;++j) elemento[j]=estrato(i)[j];
+    strncpy(elemento,(char *)estrato(i),6);
     strncpy(cad,elemento,2);
     cad[2]='\0';
     divi(i)=cad;
