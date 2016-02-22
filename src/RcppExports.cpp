@@ -16,3 +16,31 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// nn3aux
+List nn3aux(NumericMatrix cinv, CharacterVector idreceivers, CharacterVector strreceivers, NumericMatrix matreceivers, CharacterVector iddonors, CharacterVector strdonors, NumericMatrix matdonors);
+RcppExport SEXP StQTFun_nn3aux(SEXP cinvSEXP, SEXP idreceiversSEXP, SEXP strreceiversSEXP, SEXP matreceiversSEXP, SEXP iddonorsSEXP, SEXP strdonorsSEXP, SEXP matdonorsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type cinv(cinvSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type idreceivers(idreceiversSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type strreceivers(strreceiversSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type matreceivers(matreceiversSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type iddonors(iddonorsSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type strdonors(strdonorsSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type matdonors(matdonorsSEXP);
+    __result = Rcpp::wrap(nn3aux(cinv, idreceivers, strreceivers, matreceivers, iddonors, strdonors, matdonors));
+    return __result;
+END_RCPP
+}
+// CountGroup
+IntegerVector CountGroup(LogicalVector v);
+RcppExport SEXP StQTFun_CountGroup(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< LogicalVector >::type v(vSEXP);
+    __result = Rcpp::wrap(CountGroup(v));
+    return __result;
+END_RCPP
+}

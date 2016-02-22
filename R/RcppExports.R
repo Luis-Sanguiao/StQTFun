@@ -5,3 +5,11 @@ estratofun <- function(estrato) {
     .Call('StQTFun_estratofun', PACKAGE = 'StQTFun', estrato)
 }
 
+nn3aux <- function(cinv, idreceivers, strreceivers, matreceivers, iddonors, strdonors, matdonors) {
+    .Call('StQTFun_nn3aux', PACKAGE = 'StQTFun', cinv, idreceivers, strreceivers, matreceivers, iddonors, strdonors, matdonors)
+}
+
+CountGroup <- function(v) {
+    .Call('StQTFun_CountGroup', PACKAGE = 'StQTFun', v)
+}
+
