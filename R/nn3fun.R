@@ -18,27 +18,34 @@
 #'
 #' @examples
 #' nn3fun
-#' @import MASS
+#' @import MASS Rcpp
+#' @useDynLib StQTFun
 #'
 #' @export
 nn3fun<-function(id,stratum,values,donor,nvar) {
 
-  # Computation of the inverse of the covariance matrix. It may be singular, so we use ginv
-  cinv<-ginv(var(t(matrix(values,nrow=nvar)),use="na.or.complete"))
-
   # We create receivers matrix and vectors for unit and stratum identification
   matreceivers<-matrix(values[donor!=1],nrow=nvar)
   if(!ncol(matreceivers)) {
-    if (is.numeric(id)) return(list(as.numeric(NA),as.numeric(NA),as.numeric(NA)))
-    if (is.character(id)) return(list(as.character(NA),as.numeric(NA),as.numeric(NA)))
+    id[1] <- NA # preserving class
+    return(list(id[1],as.numeric(NA),as.numeric(NA)))
   }
   idreceivers<-id[donor!=1][seq.int(1,length(matreceivers),nvar)]
   strreceivers<-stratum[donor!=1][seq.int(1,length(matreceivers),nvar)]
 
   # Same for donors
   matdonors<-matrix(values[donor!=0],nrow=nvar)
+  if(!ncol(matdonors)) {
+    id[1] <- NA # preserving class
+    return(list(id[1],as.numeric(NA),as.numeric(NA)))
+  }
   iddonors<-id[donor!=0][seq.int(1,length(matdonors),nvar)]
   strdonors<-stratum[donor!=0][seq.int(1,length(matdonors),nvar)]
+  
+  
+  
+  # Computation of the inverse of the covariance matrix. It may be singular, so we use ginv
+  cinv<-ginv(var(t(matrix(values,nrow=nvar)),use="na.or.complete"))
 
   iddistlist<-nn3aux(cinv,idreceivers,strreceivers,matreceivers,iddonors,strdonors,matdonors)
 

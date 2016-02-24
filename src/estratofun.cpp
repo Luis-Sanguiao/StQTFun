@@ -1,9 +1,9 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// This function returns the UFAES-Stratum taking stratum as input
-//
-
+//' This function returns the UFAES-Stratum taking stratum as input
+//'
+//' @export
 // [[Rcpp::export]]
 List estratofun(CharacterVector estrato)
 {
