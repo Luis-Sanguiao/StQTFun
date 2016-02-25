@@ -1,10 +1,10 @@
 Package: StQTFun
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1
+Title: Functions intended to be used with StQT package
+Version: 0.1.0.9000
 Date: 2016-02-22
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: Luis Sanguiao
+Maintainer: Luis Sanguiao <luis.sanguiao.sande@gmail.com>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 LazyData: TRUE
